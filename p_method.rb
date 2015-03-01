@@ -1,5 +1,5 @@
-a = 100
-b = 'string'
+name = gets
+p name
 
-p a
-p b
+name2 = gets.chomp
+p name2
