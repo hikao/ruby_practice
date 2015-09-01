@@ -23,12 +23,12 @@ class Hoge < Test::Unit::TestCase
     puts "---setup---"
   end
   def teardown
-	puts "---teardown---"
+    puts "---teardown---"
   end
 
   def test_hoge
     puts "---test_hoge---"
     assert 3 == "3".to_i
-	assert_true true
+    assert_true true
   end
 end
