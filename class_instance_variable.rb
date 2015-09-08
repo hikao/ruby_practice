@@ -20,6 +20,16 @@ class Hoge
 	puts @a
   end
 
+  # インスタンスメソッドからクラスインスタンス変数を参照する
+  # 以下だとできない
+  def read_cls_ins_val
+    puts @civ
+  end
+  # 以下だとできる
+  def read_cls_ins_val2
+    puts self.class.instance_variable_get :@civ
+  end
+
 end
 
 h = Hoge.new("Hika")
@@ -27,3 +37,8 @@ puts h.instance_val
 puts Hoge.access_civ("dayo")
 
 h.change_a("bbb")
+puts "=====クラスインスタンス変数の参照====="
+h.read_cls_ins_val
+puts "---"
+h.read_cls_ins_val2
+
