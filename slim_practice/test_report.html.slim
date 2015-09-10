@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    meta charset="utf-8"
+    title Sample File
+  body.sample
+    #contents
+      h1 TestReport
+	.table
+	  table
+	    tr
+		  td.name = "test case"
+		  td.name = "test case"
+		  td.name = "test case"
+	  - ["test1", "test2", "test3"].each do |i|
+	    tr
+		  td.name = i
+		  td.result = "result"
+		  td.time = "time"
+
+
