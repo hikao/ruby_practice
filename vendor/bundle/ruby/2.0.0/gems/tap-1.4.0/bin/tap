@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+#
+# Runs tapexe, first setting the default ENV variables expected
+# by tap when installed by RubyGems.  Splitting the work into
+# two files like this is a pattern allowing tapexe to be run
+# without RubyGems or the default ENV (ie 'ruby tapexe').
+#
+
+ENV['TAP_GEMS']  ||= '.'
+ENV['TAP_PATH']  ||= '.'
+ENV['TAPENV']    ||= 'tapenv'
+ENV['TAPRC']     ||= '~/.taprc:taprc'
+ENV['TAPFILE']   ||= 'tapfile'
+ENV['TAP_CACHE'] ||= '~/.tap'
+
+load File.expand_path('../tapexe', __FILE__)

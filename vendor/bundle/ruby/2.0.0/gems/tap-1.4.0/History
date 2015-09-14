@@ -1,0 +1,304 @@
+== 1.4.0 / 2011-01-09
+
+* fixes unwise >= gem dependencies
+* updates license for 2011
+
+== 1.3.0 / 2010-04-02
+
+* various improvements to declarations
+* moved env methods from ShellTest to Utils
+
+== 1.0.0 - 1.2.4 / 2010-03 - 2010-04
+
+Continued rework of Tap internals. Implementation of new Env setup scheme
+based largely on signals. Updated the Declarations DSL with significantly more
+flexibility. Numerous cleanups to the API. Simplification and standardization
+of the tap syntax for defining command-line workflows.
+
+These releases were created for internal use and debugged in fairly rapid
+succession. The transition from 0.* to 1.* marks significant changes that,
+aside from the basic API, are not backwards-compatible. Going forward Tap
+should be much more stable, and the various APIs should be stable.
+
+The tasks among the various modules in the tap suite may still be reorganizd
+and the Declarations DSL is still under development.
+
+Also, about this time numerous tags were deleted to cleanup the repo.  Rap
+was removed entirely as a separate gem, as was the tap-suite.  These are
+the old tag names and their corresponding shas:
+
+  all: 5f609e24147587692303d3654f1386958f476f59
+  rap-0.12.0: 2a988dbbacac45b6b8bf0fc7c74e7d3639e64f56
+  rap-0.12.1: a1e0f3605f6937326b258038812fba775c7616bd
+  rap-0.12.2: 03dc3dfc3b365901847ef70dbf1b92d297642b00
+  rap-0.12.3: 6ce756f1f4783787f54d0f8332899972a9b4b863
+  rap-0.13.0: 6db8026cd7dabb1ff407470a9c793796b4ea6126
+  rap-0.13.1: c512db583aad0453ab5e23d54fe5ef4b3c28992c
+  rap-0.15.0: 981bae18210008c5cabc108592d3bc6a44f49530
+  tap-0.10.0: f0c4ae53e5136364f0f6c4c3b2b587daa4eaeefe
+  tap-0.10.1: 6ec15db9a9043e3eca285227b77e6e562bb2ff35
+  tap-0.11.0: 359383266c572bc8e124a751dc3097fec806e16b
+  tap-0.11.1: 5079dcb5ef33c0d5f6def81f4767925be0e8b8c5
+  tap-0.12.0: f8c97e2efbbe9e8699d20b63d29e975cd91a8c57
+  tap-0.12.1: f6ac7f29834804eafd654200096696821f698290
+  tap-0.12.2: ad7fc99d028c6c682c2eb1e7c069bea520641bdb
+  tap-0.12.3: 5cba176fcc5e8e098ed1d9165139bd9a99e097c9
+  tap-0.12.4: 9148452b903f64c1fa170048fa9fa2dfc299414f
+  tap-0.17.0: e23074c52ac656e42904b58d829e82150d76c66a
+  tap-0.17.1: 6139af4e890d55f956d6a61de31396a623b03fec
+  tap-gen-0.1.0: 25f69b6fc788c2aa302bb5623c76e7325e3391fc
+  tap-gen-0.1.1: 8f5614336350942615add73b3fe79075b54a93c1
+  tap-gen-0.1.2: 621ce1fdb7ab0d966a32a34637e39fa5221247f1
+  tap-gen-0.1.3: 60e44d4cf6ac837e28d8b4138e1e4779656341d9
+  tap-gen-0.3.0: 0b12752589ff6cf7bb081d06347fa5d74c7b6eb4
+  tap-server-0.1.0: f08a40b83e370d37adf54ab322f153c2392de9ce
+  tap-server-0.1.1: dada4c9ca83191e9990eaaf7215c049cc7dc88a9
+  tap-server-0.2.0: 45b0d1fb7381ba824b5234079441e8f252a9d28d
+  tap-server-0.3.0: 861fd836b7d19422c7bbb4e3b65981f409130b3d
+  tap-server-0.4.0: 4f2b8c6e146bdca781f30f35d608815544f96e3e
+  tap-server-0.6.0: bfce08a4a73aeffe3b873f9d2bd1b36db4489598
+  tap-suite-0.1.0: 8ab253ee8f72f79a5f7b9b7928831affbcfacda9
+  tap-suite-0.2.0: 76afbec380f6faf7fbec386f2f40c1cbd074b6d9
+  tap-suite-0.3.0: bbfe80400f6d5e988dea9ad1fa3b25851f5aa8e7
+  tap-tasks-0.1.0: fb4d357010a321ab31bf689d3794889f36487059
+  tap-tasks-0.2.0: c0a561780b49de3eaa2a4ef7c69070a47d0b902b
+  tap-tasks-0.5.0: 357d793a78808a26438b4b66c4f6c471a23d05f8
+  tap-test-0.1.0: b533809da134fda0f9fd685c766fe8f26da7f0f3
+  tap-test-0.3.0: 140580cf49bc58cd1e64b5eb9ef7cc8066fa9410
+
+We'll see if I can't keep this under control a little better.
+
+== 0.19.0 / 2009-12-05
+
+Significant rework of Tap internals.
+
+* extracted task/join/middleware code to make Api base class
+* some changes to semantics of Minimap; entry_to_minikey is now entry_to_path.
+  Likewise entries now specify their own path using entry.path rather than
+  entry.minikey
+* added Signals implemented with the Dsl pattern
+
+== 0.18.1
+
+* updated API to allow nodes that do not respond to joins
+* fixed bug in reassigning Sync joins
+* added quick-queue option to run
+* added short options to app configs
+* added blocks to app.log
+* added --help flag for joins, middleware
+* removed recurrent loading hooks from load
+  (see tap-tasks:tap/tasks/stream)
+  
+== 0.18.0 / 2009-06-17
+
+Several updates to simplify Tap. Most significantly, dependencies have been
+removed because their general utility is quite doubtful, and it it easy to
+implement in situations that require them (ex rap).
+
+* bug fix in console (app now refers to Tap::App.current)
+* bug fix in load for recurrently loading from a file
+* fixed a mistake in run help
+* made load only load once by default, stream loading must be enabled in
+  subclasses
+* dump now returns the input, not the io
+* removed dependencies from tap
+* removed intern method on Task (now use app.task)
+* removed Support module (ie refactored Templater to Tap::Templater)
+* removed Task.help method
+* added Middleware baseclass
+* Task.parse now yields opts to block for modifications
+* renamed 'tap/constants' file as 'tap/version'
+
+== 0.17.1 / 2009-06-06
+
+* documentation and interface updates
+* reworked load to allow recurrent loads
+* modified stack to check_terminate before calling a node
+* fixed parsing of empty breaks in command line schema
+* simplified/standardized YAML schema syntax
+* added support for middleware to parser
+
+== 0.17.0 / 2009-05-25
+
+Significant reorganization and update to Tap internals. The workflow syntax
+for joins has changed in incompatible ways, and several key methods have been
+renamed. Obviously not backwards compatible but most tasks will work without
+alteration.
+
+Upgrade Notes:
+
+* Tasks now are identified by "::task" rather than "::manifest" The manifest
+  identifier still works for now but will be removed by 1.0. 
+* Root#filepath and Root#relative_filepath have been renamed Root#path and
+  Root#relative_path 
+* Audits have been removed 
+* Generators, FileTask, and test modules have been removed to separate modules
+  (tap-gen, tap-tasks, tap-test). Install tap-suite to get them all back. 
+* switched const_name, name on Constant * refactored on_complete_block to join
+* callbacks in Task have been removed * schema syntax no longer supports
+  rounds, globals
+
+Changes:
+
+* added application middleware
+* reworked dump to use an io target config
+* added unloading to Constant
+* reworked App to use aggregators that respond_to? call
+* reworked Join so that it may be dumped as YAML
+* reworked Schema syntax
+* etc
+
+== 0.12.4 / 2009-03-23
+
+* fixed bug in App#inspect
+* documentation updates
+* changed the default load/dump configs to load and dump data without
+  serialization
+* made stdin the default input to load
+* updated run syntax to allow arguments to be passed to saved workflows
+* updates to RootGenerator
+
+== 0.12.3 / 2009-03-05
+
+* Updates to allow Tap to use the latest Configurable.
+* Updated RootGenerator
+* Fixed minor task --help bugs
+* Documentation updates
+
+== 0.12.2 / 2009-02-23
+
+* Added --no-yaml option to Dump and Load
+* Added --aggregate option to Join
+* Updated Dump behavior to merge inputs before process
+* Reworked App so that it is not a Root
+* Added the ability to load workflows via 'tap run'
+
+== 0.12.1 / 2009-02-18
+
+Maintenance release with updates to Dump and Load tasks.
+
+* refactored Dump as CoreDump
+* implemented a simple yaml Dump
+* simplified Load
+
+== 0.12.0 / 2009-02-17
+
+As of the 0.12.0 release, Tap is distributed as several independent modules
+which can be collectively installed through tap-suite.  Tap has been cleaned
+up significantly since the 0.11 series, and some changes are not backwards
+compatible.  The main task API has been preserved.
+
+Notable changes include:
+
+* Lazydoc, Configurable, Rap, and Tap generators are now
+  independent gems.  Install the whole suite via tap-suite
+* Removed use of OptionParser
+* Root#directories was refactored to Root#relative_paths
+* Added several methods to Root
+* Added splat option for joins
+* Refactored stack short option to 'k'
+* Reworked Sequence, Fork, and Merge as special cases of Join
+* Reworked Audit as a directed acyclic graph
+* Cleanup and extension of FileTask API
+* Removed RSpec support
+* Added Mini::Test support
+* Added/clarified Task nesting
+* Removed batching from Executable (neat feature but complex in joins)
+* The tap executable longer automatically reconfigures tasks from config files
+
+Upgrade note:
+
+* Root#directories was refactored to Root#relative_path, so the file_test
+  :directories option needs to be updated to :relative_paths
+* Several test methods were removed in favor of better alternatives through
+  method_root itself.  In particular method_tempfile('path') should be
+  replaced with method_root.prepare(:tmp, 'path').
+* EnvVars#env was refactored to EnvVars#env_var to prevent a common collision
+  with env as a test variable.
+
+== 0.11.0 / 2008-10-20
+
+Significant update to Tap with many internal reworks. Major changes include:
+
+* Addition of Parser/Schema
+* Addition of rap and task declarations
+* Removal of Workflow in preference of workflow
+  definitions within Task
+* Refactoring of Test modules
+* Expanded/updated documentation
+
+== 0.10.1 / 2008-08-21
+
+Update of Tap with a few improvements to manifests and a new manifest command.
+
+* Fixed some bugs and extended manifests
+* Bug fixes in generators
+* Added task definitions to Workflow
+
+== 0.10.0 / 2008-08-08
+
+Major revision. Reworked configurations and the execution environment. Added
+Lazydoc documentation. Backwards incompatible. Development is now on GitHub.
+
+== 0.9.1 / 2008-04-26 revision 253
+
+Relatively minor update, but with one important refactoring that removes the
+Tap::Script module. This breaks backward compatibility but only should affect
+people who have made their own commands. Simply sub Tap::Support::CommandLine
+for Tap::Script to fix.
+
+* Added constants methods (ex try_constantize) to String
+* Added gem discovery when no tap.yml file is present
+* Cleanup and refactoring -- removal of Tap::Script
+* Bug fix for JRuby 1.1.1
+
+== 0.9.0 / 2008-04-09 revision 246
+
+Major update to Tap. Many changes in this release ARE NOT BACKWARD COMPATIBLE.  
+
+* Reworked Task and App such that methods,  are
+  enqued and executed.  Made the Executable module 
+  to allow any Method to be enqued and executed.
+* App now aggregates results for methods that have no 
+  on_complete block; enabled access through App#results 
+  and App#_results.
+* Removed iteration from tasks
+* Task no longer templates app.config_templates.  Templating code
+  removed from this distribution.
+* Work to improve audit usability and visualization
+* Removed methods forwarding from Audit to Audit#_current,
+  as well as ambiguous Audit methods
+* Root [] now returns expanded paths unchanged. Example:
+  app['relative/path']  # => File.join(app.root, 'relative/path')
+  app['/expanded/path'] # => '/expanded/path'
+* Generalized rake support; now supports version 0.8.1
+* Fixes in generators
+* Improvements in running of multithread tasks
+* Removed condition blocks from tasks
+* many other things also...
+
+== 0.8.0 / 2007-12-08 revision 138
+
+Major update to Tap. Many changes in this release ARE NOT BACKWARD COMPATIBLE.  
+Documentation is still patchy, but improving.
+
+* Expanded/reworked application configuration, allowing specification of gems
+  to be loaded as task libraries.
+* Default app config file is now tap.yml (from app.yml)
+* Updated and improved generators
+* Included rails_generators in distribution, removing rails dependency
+* Reworked many classes to clean up interface
+* Reworked testing methods
+* Improved configuration for tasks
+* Optimized loading
+* Reworked threading model
+* Addition of TDoc documentation
+* Reworked tap command and subcommands
+* Added packaging into executables
+* Updated to ActiveSupport 2.0.1
+* documentation, documentation, documentation
+* many other things as well...
+
+== 0.7.9 / 2007-09-14
+
+* Initial testing release with partial documentation

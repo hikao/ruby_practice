@@ -1,0 +1,77 @@
+== 0.7.0 / 2010-05-02
+
+* Utils#load_file now properly raises error for non-existant files
+* Improved/added support for JRuby, Rubinius, MRI 1.9.1
+* Added guess method to Validations
+* Added warn_ignored_args to ConfigParser
+* Patched security hole via string evals
+
+== 0.6.0 / 2009-12-05
+
+* minor bug fixes in interface
+* added on! to ConfigParser to specify override options
+* updates to use latest Lazydoc
+* added scrub to DelegateHash#to_hash, to remove keys
+  set to the default value
+* added strbol validation
+* nil long options are now respected
+* refactored default_config to defaults in ConfigParser
+* refactored Validation register syntax
+* added scan method to ConfigParser
+* ConfigParser can no longer ignore unknown options
+* added configurable option breaks to ConfigParser
+* refactored Delegate to Config, and simplified
+  implementation for nesting to use NestConfig
+* refactored :duplicate_default attribute to :dup
+* added undef_config and remove_config methods
+
+== 0.5.0 / 2009-05-25
+
+* fixed io validation to not duplicate IOs
+* fixed :hidden type for nested configurations
+* open_io now returns block result
+* updated Validation parsing of strings into ranges
+* DelegateHash now has the ability to rebind a receiver
+* list validation now accepts validation block
+* added api validation
+* configs may now be specified in modules and included
+  into classes
+* ConfigParser can now ignore unknown options
+* converted num to numeric in Validation (for consistency)
+* changed 'values' to 'options' in select and list_select
+* expanded io/open_io to allow integer file descriptors
+* reworked mapping in DelegateHash to respect indifferent
+  access
+
+== 0.4.2 / 2009-03-30
+
+* set delegate default no longer freezes value
+* added :duplicate_default attribute to turn off default
+  value duplication
+* standardized formatting of argument names
+* added select and list_select validations
+* added io validation + open_io method
+
+== 0.4.1 / 2009-03-23
+
+* Simplified internal API for nesting (removed initialize_<key>)
+* Added :hidden option type to prevent declaration of an option
+* Refactored :map_default attribute to :set_default
+* Made OrderedHashPatch preserve order when serialized as YAML
+
+== 0.4.0 / 2009-03-05
+
+Reworked nesting.  Changes are not backward compatible.
+
+* Nesting syntax reworked
+* Delegates no longer accept nil reader/writers
+
+== 0.3.0 / 2009-02-17
+
+Significant rework of the 0.1.0 release:
+
+* Added CDoc
+* Expanded use of nested configs
+* Added dumping of configs for config files
+* Updates to Range/Regexp validations
+* Numerous bug fixes

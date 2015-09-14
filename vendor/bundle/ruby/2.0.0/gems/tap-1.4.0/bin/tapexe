@@ -1,0 +1,84 @@
+#!/usr/bin/env ruby
+
+# usage: tap [workflow] [--- tapfile] [-d-]
+#
+# workflow:
+#   [break] [left:]right [ARGS...]   Constants are identified by matching the
+#                                    left and right paths; all subsequent args
+#   example:                         are passed to the constant. Breaks delimit
+#   tap:load -> Tap::Tasks::Load     and the syntax repeats.
+#
+# breaks:
+#   -                                Delimiter, separates object argvs
+#   --                               Delimits argvs and enques the next object
+#   -:[qai][.class]                  Sequence - joins previous and next objects
+#   -/obj[/sig]                      Signal - enques signal with argv
+#   --/obj[/sig]                     Signal - executes signal with argv
+#   -@ obj                           Enque  - enques obj with argv
+#   -! obj                           Execute - executes obj with argv
+#   -. .-                            Escape begin/end
+#   ---                              End workflow
+#
+# env:
+#   TAP_GEMS                         Gem patterns to match and register
+#   TAP_PATH                         Directory paths to register
+#   TAPENV                           Signal files for env
+#   TAPRC                            Signal files for app
+#   TAPFILE                          Declaration files
+#
+# examples:
+#   tap load str -: dump             A simple sequence workflow
+#   tap load str - dump - join 0 1   Manually build the join
+#   tap --/use debugger -d-          Debugging utilities
+#   tap prompt                       Open a prompt
+#   tap list                         List resources
+#
+
+require 'tap'
+require 'tap/parser'
+
+begin
+  options = Tap.options
+  
+  if ARGV[-1] == '-d-'
+    ARGV.pop
+    options[:debug] = 'true'
+  end
+  
+  if ARGV == ['--help']
+    puts Lazydoc.usage(__FILE__)
+    puts "\nversion #{Tap::VERSION} -- #{Tap::WEBSITE}"
+    exit(0)
+  end
+  
+  app = Tap.setup(options)
+  parser = Tap::Parser.new
+  
+  loop do
+    break if ARGV.empty?
+    parser.parse!(ARGV)
+    parser.build_to(app)
+  
+    break if ARGV.empty?
+    config_parser = ConfigParser.new(app.config, 
+      :option_break => Tap::Parser::BREAK, 
+      :keep_break => true, 
+      :clear_config => false, 
+      :add_defaults => false)
+    config_parser.add(app.class.configurations)
+    
+    config_parser.scan(ARGV) do |file|
+      app.call('sig' => 'load', 'args' => [file])
+    end
+  end
+  
+  app.run
+rescue
+  if $DEBUG || options[:debug]
+    raise $!
+  end
+  $stderr.puts $!.message
+  exit(1)
+end
+
+exit(0)
