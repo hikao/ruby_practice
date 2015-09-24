@@ -1,23 +1,9 @@
 #!/usr/bin/ruby
 
-# about eval
+# evalを使ったメソッドの定義
 
-# レシーバの違いを確かめる
-eval "p self"
-o = Object.new
-o.instance_eval { p self }
-o.class.class_eval { p self }
-Kernel.module_eval {p self }
-
-# Kernel.#eval
-p eval "1 + 1"
-
-a = 10
-eval "a *= 2"
-p a
-
-# evalを使ってメソッドを定義する
-
+# 以下は、インスタンス変数が代入された時に、
+# 別のインスタンス変数に値を保持するメソッド
 class LoggingInstanceVal
   hoge = %w(first_val sec_val third_val)
   hoge.each do |v|
@@ -35,10 +21,10 @@ end
 obj = LoggingInstanceVal.new
 obj.first_val = 3
 obj.first_val = 4
-p obj.first_val
-p obj.before_first_val
+p obj.first_val         # => 4
+p obj.before_first_val  # => 3
 
 obj.third_val = :third_val
 obj.third_val = "third_val"
-p obj.third_val
-p obj.before_third_val
+p obj.third_val        # => third_val
+p obj.before_third_val # => :third_val
