@@ -8,8 +8,8 @@ class Hoge
 
   def method_missing(name, *args)
     puts "hogehoge"
-	puts name
-	puts *args
+	  puts name
+	  puts *args
   end
 end
 
