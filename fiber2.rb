@@ -7,5 +7,5 @@ fiber = Fiber.new { |first|
   'good bye, again'
 }
 
-fiber.resume("first dayo")
-fiber.resume("second dayo")
+puts fiber.resume("hello") # => 'goodbye'
+puts fiber.resume("hello, again") # => 'good bye, again'
