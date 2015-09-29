@@ -23,3 +23,14 @@ p h.new.class # => Struct::Human
 p hum = h.new('23', 'woman')
 p hum.age
 p hum.gender
+
+# メソッドを定義する
+Human2 = Struct.new('Human2', 'age', 'gender') {
+  attr_accessor :hoge
+  def hoge
+    @hoge = "aaa"
+  end
+}
+
+p Human2.new('10', 'man').hoge
+
