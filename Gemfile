@@ -8,3 +8,5 @@ end
 group :live do
   gem "rspec"
 end
+gem "parallel"
+gem "parallel_tests"

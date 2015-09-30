@@ -1,6 +1,23 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    diff-lcs (1.2.5)
+    parallel (1.6.1)
+    parallel_tests (1.7.1)
+      parallel
+    rspec (3.3.0)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
+    rspec-core (3.3.2)
+      rspec-support (~> 3.3.0)
+    rspec-expectations (3.3.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-mocks (3.3.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-support (3.3.0)
     tapp (1.5.0)
       thor
     thor (0.19.1)
@@ -9,6 +26,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  parallel
+  parallel_tests
+  rspec
   tapp
 
 BUNDLED WITH
