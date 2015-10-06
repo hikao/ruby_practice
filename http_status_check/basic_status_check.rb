@@ -7,5 +7,5 @@ urls = url_list['urls']
 
 for url in urls do
 	response = Net::HTTP.get_response(URI.parse(url))
-	puts response.code
+	p response.code
 end
