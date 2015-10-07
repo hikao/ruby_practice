@@ -10,8 +10,9 @@ class TestMainsiteStatusCheck < StatusChecker
   def test_pc_urls
     p "test_pc_urls"
     urls = URL_LIST['pc']
+    http_status_check(urls[0])
 
-    Parallel.each(urls, in_processes:4) do |url|
+    Parallel.each(urls, in_thread:0) do |url|
       http_status_check(url)
     end
   end

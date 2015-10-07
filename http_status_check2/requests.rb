@@ -9,7 +9,6 @@ module Requests
   # @param [String] url リクエストを投げるurl
   # @return [Net::HTTP] response HttpStatusCode
   def get_response(url)
-    p url.class
     response = Net::HTTP.get_response(URI.parse(url))
     return response
   end
