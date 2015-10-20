@@ -23,4 +23,20 @@ workers = 3.times.map { |t|
   }
 end
 
-sleep 1 until queue.empty?
+# 全てのキューが処理されるまで待つ
+sleep 2 until queue.empty?
+
+# workersの中身を確認
+p workers.map(&:status)
+
+6.times do |t|
+  queue.enq -> {
+    sleep 1
+  }
+end
+
+# workersの中身を確認
+p workers.map(&:status)
+
+# 全てのキューが処理されるまで待つ
+sleep 2 until queue.empty?
