@@ -6,7 +6,8 @@ files = %w(array.rb binding.rb block_sample1.rb)
 
 threads = files.map {|file|
   Thread.fork{
-    num = File.readlines(file)
+    num = File.readlines(file).length
+    "#{file}: #{num}"
   }
 }
-p threads.map(&:value)
+p threads.map(&:join)
