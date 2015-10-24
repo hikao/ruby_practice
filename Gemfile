@@ -10,3 +10,4 @@ group :live do
 end
 gem "parallel"
 gem "parallel_tests"
+gem "capistrano"
