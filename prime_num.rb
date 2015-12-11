@@ -1,7 +1,6 @@
 #!/usr/bin/ruby
 
 def prime?(num)
-  # num > 0 をチェックすべき...
   return false if num == 1
   (2..Math.sqrt(num)).each do |x|
     if num % x == 0
