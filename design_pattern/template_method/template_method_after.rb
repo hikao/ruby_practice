@@ -4,17 +4,17 @@
 
 class Report
   def initialize
-	@title = "月次レポート"
-	@text = ["順調","OK"]
+	  @title = "月次レポート"
+	  @text = ["順調","OK"]
   end
 
   def output_report
-	output_start
-	output_head
-	output_body_start
-	output_body
-	output_body_end
-	output_end
+	  output_start
+	  output_head
+	  output_body_start
+	  output_body
+	  output_body_end
+	  output_end
   end
 
   def output_start
@@ -74,7 +74,7 @@ end
 
 class TextReport < Report
   def output_start
-    puts "##### This is text report file #####"
+    puts "##### This is TextReport #####"
   end
 
   def output_head
@@ -82,6 +82,7 @@ class TextReport < Report
   end
 
   def output_body_start
+    puts "今の所順調です。"
   end
 
   def output_body
@@ -97,5 +98,6 @@ end
 h_report = HtmlReport.new
 h_report.output_report
 
+puts "\n\n\n" 
 t_report = TextReport.new
 t_report.output_report
