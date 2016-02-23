@@ -11,6 +11,6 @@ doc = Nokogiri::HTML(open(target_url))
 
 bukken_count = doc.xpath("//p[@class='raCount']/span[@class='count']/text()")
 today = Date.today.strftime("%Y-%m-%d")
-puts "today is #{bukken_count} bukken."
+puts "#{today} is #{bukken_count} bukken."
 
 # DBへ件数を登録する
