@@ -10,7 +10,11 @@ require 'json'
 target_url = URI.escape("http://www.homes.co.jp/")
 doc = Nokogiri::HTML(open(target_url))
 
-bukken_count = doc.xpath("//p[@class='raCount']/span[@class='count']/text()")
+begin
+  bukken_count = doc.xpath("//p[@class='raCount']/span[@class='count']/text()")
+rescue => e
+  p e.message
+end
 today = Date.today.strftime("%Y-%m-%d")
 puts "#{today} is #{bukken_count} bukken."
 
