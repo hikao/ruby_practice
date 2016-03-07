@@ -1,10 +1,31 @@
 #!/usr/bin/ruby
 
 class Parent
-  def parent_method 
-    puts "parent_method"
+  def initilized
+  end
+  def say_adult_age
+    puts "33 years old"
+  end
+
+  def work
+    puts "i can work out!"
   end
 end
 
-c = self.class.const_set(:Child, Class.new)
-puts c.class
+class Human
+
+  const_set(:Child, Class.new(Parent) do |klass|
+    def say_my_age
+      puts "10 years old"
+    end
+    define_method("define_method") do |method|
+      puts method
+    end
+  end)
+  
+end
+
+c = Human::Child.new
+c.say_my_age
+c.say_adult_age
+c.define_method("aaa")
