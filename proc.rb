@@ -2,8 +2,13 @@
 
 # about Proc
 
-hoge = Proc.new do
-  puts "call by proc"
+n = 0
+
+plusone = Proc.new do 
+ puts n = n + 1  
 end
 
-hoge.call
+plusone.call
+plusone.call
+plusone.call
+plusone.call
